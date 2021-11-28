@@ -36,5 +36,6 @@ export const PodiumLink = styled.a`
 
   &:hover {
     background-color: #38383f;
+    color: white;
   }
 `

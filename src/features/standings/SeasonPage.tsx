@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import SeasonSelector from '../components/SeasonSelector'
-import ConstructorStandings from '../components/Standings/ConstructorStandings'
-import DriverStandings from '../components/Standings/DriverStandings'
+import ConstructorStandings from './ConstructorStandings'
+import DriverStandings from './DriverStandings'
+import SeasonSelector from '../../components/SeasonSelector'
 
 const Container = styled.div`
   max-width: 1320px;
@@ -22,7 +22,7 @@ const StandingsContainer = styled.div`
   margin: 0 10px;
 `
 
-export default function PageSeason() {
+export default function SeasonPage() {
   return (
     <Container>
       <h1>Standings for <SeasonSelector /></h1>

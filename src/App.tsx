@@ -1,6 +1,5 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import PageSeason from './pages/Season'
+import SeasonPage from './features/standings/SeasonPage'
 import Layout from './components/Layout'
 
 import './App.css'
@@ -9,7 +8,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<PageSeason />} />
+        <Route index element={<SeasonPage />} />
       </Route>
     </Routes>
   )
