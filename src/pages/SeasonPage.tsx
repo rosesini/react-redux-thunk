@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import styled from 'styled-components'
-import ConstructorPodium from '../features/constructors/ConstructorPodium'
-import DriverPodium from '../features/drivers/DriverPodium'
+import ConstructorStandingsPodium from '../features/constructors/ConstructorStandingsPodium'
+import DriverStandingsPodium from '../features/drivers/DriverStandingsPodium'
 import SeasonSelector from '../components/SeasonSelector'
 
 const Container = styled.div`
@@ -22,17 +23,25 @@ const StandingsContainer = styled.div`
   margin: 0 10px;
 `
 
+const currentYear = new Date().getFullYear().toString()
+
 export default function SeasonPage() {
+  const [season, setSeason] = useState<string>(currentYear)
+
+  const handleSeasonChange = (value: string) => {
+    setSeason(value)
+  }
+
   return (
     <Container>
-      <h1>Standings for <SeasonSelector /></h1>
+      <h1>Standings for <SeasonSelector handleChange={handleSeasonChange} /></h1>
 
       <Standings>
         <StandingsContainer>
-          <DriverPodium />
+          <DriverStandingsPodium season={season} />
         </StandingsContainer>
         <StandingsContainer>
-          <ConstructorPodium />
+          <ConstructorStandingsPodium season={season} />
         </StandingsContainer>
       </Standings>
     </Container>

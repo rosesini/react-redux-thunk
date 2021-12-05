@@ -2,7 +2,8 @@ import { Route, Routes } from 'react-router-dom'
 import SeasonPage from './pages/SeasonPage'
 import Layout from './components/Layout'
 
-import './App.css'
+import './index.css'
+import './styles/type.css'
 
 function App() {
   return (

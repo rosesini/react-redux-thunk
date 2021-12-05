@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 
 const currentYear = new Date().getFullYear()
@@ -33,12 +34,16 @@ const Option = styled.option`
   font-weight: bold;
 `
 
-export default function SeasonSelector(props: any) {
-  return (
-    <Select {...props}>
-      {seasonYears.map((year) => (
-        <Option key={year} value={year}>{year}</Option>
-      ))}
-    </Select>
-  )
+type SeasonSelectorProps = {
+  handleChange: (value: string) => void
 }
+
+const SeasonSelector: React.FC<SeasonSelectorProps> = ({ handleChange }) => (
+  <Select onChange={(event) => handleChange(event.target.value)}>
+    {seasonYears.map((year) => (
+      <Option key={year} value={year}>{year}</Option>
+    ))}
+  </Select>
+)
+
+export default SeasonSelector
