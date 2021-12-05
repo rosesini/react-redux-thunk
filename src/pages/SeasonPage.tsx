@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import ConstructorStandings from './ConstructorStandings'
-import DriverStandings from './DriverStandings'
-import SeasonSelector from '../../components/SeasonSelector'
+import ConstructorPodium from '../features/constructors/ConstructorPodium'
+import DriverPodium from '../features/drivers/DriverPodium'
+import SeasonSelector from '../components/SeasonSelector'
 
 const Container = styled.div`
   max-width: 1320px;
@@ -29,10 +29,10 @@ export default function SeasonPage() {
 
       <Standings>
         <StandingsContainer>
-          <DriverStandings />
+          <DriverPodium />
         </StandingsContainer>
         <StandingsContainer>
-          <ConstructorStandings />
+          <ConstructorPodium />
         </StandingsContainer>
       </Standings>
     </Container>

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import SeasonPage from './features/standings/SeasonPage'
+import SeasonPage from './pages/SeasonPage'
 import Layout from './components/Layout'
 
 import './App.css'

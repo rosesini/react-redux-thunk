@@ -1,6 +1,6 @@
-import { Podium, PodiumItem, PodiumLink } from './StyleComponents'
+import { Podium, PodiumItem, PodiumLink } from '../../components/StandingStyles'
 
-export default function DriverStandings() {
+export default function DriverPodium() {
   return (
     <Podium>
       <PodiumItem>
