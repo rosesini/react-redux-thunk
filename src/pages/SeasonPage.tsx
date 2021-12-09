@@ -21,6 +21,11 @@ const Standings = styled.div`
 const StandingsContainer = styled.div`
   flex: 100% 1;
   margin: 0 10px;
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
 `
 
 const currentYear = new Date().getFullYear().toString()

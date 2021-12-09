@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadDriverStandings, selectDriverStandingsPodium } from './driverStandingsSlice'
 import { Podium, PodiumDriver, PodiumItem, PodiumLink, PodiumRank, PodiumRight, PodiumSubdetail, PodiumTime, TeamColorIcon } from '../../components/StandingStyles'
 import { RANDOM_TEAM_COLORS } from '../../utils'
+import Loading from '../../components/Loading'
 
 type DriverStandingsPodiumProps = {
   season: string
@@ -10,11 +11,17 @@ type DriverStandingsPodiumProps = {
 
 const DriverStandingsPodium: React.FC<DriverStandingsPodiumProps> = ({ season }) => {
   const dispatch = useDispatch()
-  const standings = useSelector(state => selectDriverStandingsPodium(state, season))
+  const { status, standings } = useSelector(state => selectDriverStandingsPodium(state, season))
   
   useEffect(() => {
     loadDriverStandings(season, dispatch)
-  }, [dispatch, season])  
+  }, [dispatch, season])
+
+  if (status === 'loading') {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Podium>

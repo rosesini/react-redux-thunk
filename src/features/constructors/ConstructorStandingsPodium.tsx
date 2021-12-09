@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Podium, PodiumDriver, PodiumItem, PodiumLink, PodiumRank, PodiumRight, PodiumTime, TeamColorIcon } from '../../components/StandingStyles'
 import { RANDOM_TEAM_COLORS } from '../../utils'
 import { loadConstructorStandings, selectConstructorStandingsPodium } from './constructorStandingsSlice'
+import Loading from '../../components/Loading'
 
 type ConstructorStandingsPodiumProps = {
   season: string
@@ -10,11 +11,17 @@ type ConstructorStandingsPodiumProps = {
 
 const ConstructorStandingsPodium: React.FC<ConstructorStandingsPodiumProps> = ({ season }) => {
   const dispatch = useDispatch()
-  const standings = useSelector(state => selectConstructorStandingsPodium(state, season))
+  const { status, standings } = useSelector(state => selectConstructorStandingsPodium(state, season))
 
   useEffect(() => {
     loadConstructorStandings(season, dispatch)
   }, [dispatch, season])
+
+  if (status === 'loading') {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Podium>

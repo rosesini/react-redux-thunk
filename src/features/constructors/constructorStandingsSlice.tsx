@@ -57,8 +57,13 @@ const constructorStandingsSlice = createSlice({
 export default constructorStandingsSlice.reducer
 
 export const selectConstructorStandingsState = (state: any) => state.constructorStandings
-export const selectConstructorStandingsPodium = (state: any, season: string) =>
-  state.constructorStandings[season]?.standings?.slice(0, 10) || []
+export const selectConstructorStandingsPodium = (state: any, season: string) => {
+  const { status, standings } = state.constructorStandings[season] || {}
+  return {
+    status: status || 'idle',
+    standings: standings?.slice(0, 10) || []
+  }
+}
 
 
 // Helpers

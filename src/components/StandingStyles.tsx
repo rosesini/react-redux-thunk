@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Podium = styled.ul`
+  width: 100%;
   padding: 4px;
   border-radius: 4px;
   background-color: #f3f3f3;

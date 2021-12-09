@@ -57,8 +57,14 @@ const driverStandingsSlice = createSlice({
 export default driverStandingsSlice.reducer
 
 export const selectDriverStandingsState = (state: any) => state.driverStandings
-export const selectDriverStandingsPodium = (state: any, season: string) =>
-  state.driverStandings[season]?.standings?.slice(0, 10) || []
+export const selectDriverStandingsPodium = (state: any, season: string) => {
+  const { status, standings } = state.driverStandings[season] || {}
+  
+  return {
+    status: status || 'idle',
+    standings: standings?.slice(0, 10) || []
+  }
+}
 
 
 // Helpers
