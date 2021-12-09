@@ -76,7 +76,7 @@ const driverStandingsAdapter = (res: any) => {
 
   return listsData[0]['DriverStandings']
     .map((driver: any) => {
-      const { Driver: { driverId, familyName, givenName, nationality }, Constructors, ...rest } = driver
+      const { Driver: { driverId, familyName, givenName, nationality, url }, Constructors, ...rest } = driver
       const constructor = (Constructors && Constructors.length && Constructors[0]) || undefined
 
       return {
@@ -84,6 +84,7 @@ const driverStandingsAdapter = (res: any) => {
         familyName,
         givenName,
         nationality,
+        url,
         constructor,
         ...rest
       }

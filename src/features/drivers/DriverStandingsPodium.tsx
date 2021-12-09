@@ -20,7 +20,7 @@ const DriverStandingsPodium: React.FC<DriverStandingsPodiumProps> = ({ season })
     <Podium>
       {standings.map((standing: any, id: number) => (
         <PodiumItem key={id}>
-          <PodiumLink>
+          <PodiumLink href={standing["url"]} target="_blank">
             <PodiumRank>{standing["position"]}</PodiumRank>
             <TeamColorIcon style={{ background: RANDOM_TEAM_COLORS[id] }} />
             <PodiumDriver>
