@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit'
 import { store, AppDispatch } from '../../app/store'
 import axios from '../../app/axios'
 
@@ -57,14 +57,17 @@ const driverStandingsSlice = createSlice({
 export default driverStandingsSlice.reducer
 
 export const selectDriverStandingsState = (state: any) => state.driverStandings
-export const selectDriverStandingsPodium = (state: any, season: string) => {
-  const { status, standings } = state.driverStandings[season] || {}
+export const selectDriverStandingsPodium = createSelector(
+  [selectDriverStandingsState, (state, season: string) => season],
+  (driverStandings, season: string) => {
+    const { status, standings } = driverStandings[season] || {}
   
-  return {
-    status: status || 'idle',
-    standings: standings?.slice(0, 10) || []
+    return {
+      status: status || 'idle',
+      standings: standings?.slice(0, 10) || []
+    }
   }
-}
+)
 
 
 // Helpers
